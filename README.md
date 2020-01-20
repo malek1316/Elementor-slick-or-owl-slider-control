@@ -230,9 +230,6 @@ protected function _register_controls() {
 
 		if ( $grid_query->have_posts() ) : 
 
-
-	if ( $slider == 'yes' ) {
-
 		$e_uniqid     = uniqid();
 ?>
 
@@ -358,58 +355,7 @@ protected function _register_controls() {
     <?php endwhile; wp_reset_postdata(); ?>
 </div>
 
-<?php } else { ?>
-
-<div class="row testimonial-grid">
-	<?php while ( $grid_query->have_posts() ) : $grid_query->the_post(); global $post; 
-
-	    $ifinger_testimonial_info = get_post_meta( get_the_ID(), '_ifinger_testimonial', true );
-
-	    if (!empty($ifinger_testimonial_info['designation'])) {
-	      $designation = $ifinger_testimonial_info['designation'];
-	    } else {
-	      $designation = '';
-	    }if (!empty($ifinger_testimonial_info['rewiew_setting'])) {
-	      $rewiew_setting = $ifinger_testimonial_info['rewiew_setting'];
-	    } else {
-	      $rewiew_setting = '';
-	    }if (!empty($ifinger_testimonial_info['rewiew_color'])) {
-	      $rewiew_color = $ifinger_testimonial_info['rewiew_color'];
-	    } else {
-	      $rewiew_color = '';
-	    }
-  	?>
-    <div class="col-xl-4">
-        <div class="single-testimonial">
-            <?php if( $review_disable != 'yes' ){ ?>
-      		<div class="testi-review mb-15">
-      			<?php 
-      			  for ($i=0; $i <=4 ; $i++) {
-      			    if ($i < $rewiew_setting) {
-      			      $full = 'fas';
-      			    } else {
-      			      $full = 'far';
-      			    }
-      			    echo "<i class=\"$full fa-star\"></i>";
-      			  }
-      			?>
-      		</div>
-          	<?php } ?>
-
-            <div class="testi-content">
-                <?php the_content(); ?>
-            </div>
-            <div class="testi-avatar">
-                <h4><?php the_title(); ?></h4>
-                <span><?php echo esc_html( $designation ); ?></span>
-            </div>
-            <i class="fal fa-quote-left"></i>
-        </div>
-    </div>
-    <?php endwhile; wp_reset_postdata(); ?>
-</div>
-
-<?php } endif;   //main if end
+<?php endif;   //main if end
 
 	}
 
